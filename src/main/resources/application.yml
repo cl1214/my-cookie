@@ -1,0 +1,20 @@
+server:
+  port: 8889
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: perp-service-dev
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/root?serverTimezone=Asia/Shanghai&autoReconnect=true
+      username: cl
+      password: 123456
+      #filters: stat, wall, log4j2
+      initial-size: 10
+      minIdle: 10
+      max-active: 100
+      maxWait: 180000
+      test-on-borrow: true
