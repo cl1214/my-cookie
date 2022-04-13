@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: perp-service-dev
+    name: my-cookie
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
