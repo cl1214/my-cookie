@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.cl.mapper")
+@MapperScan("com.cl.mapper.*")
 public class MyCookieApplication {
     public static void main(String[] args) {
         SpringApplication.run(MyCookieApplication.class);

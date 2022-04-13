@@ -10,9 +10,8 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/root?serverTimezone=Asia/Shanghai&autoReconnect=true
-      username: cl
+      username: root
       password: 123456
-      #filters: stat, wall, log4j2
       initial-size: 10
       minIdle: 10
       max-active: 100
