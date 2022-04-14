@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TransactionMandatoryServiceImpl implements TransactionCommonService {
+public class TransactionNotSupportedServiceImpl implements TransactionCommonService {
 
     @Autowired
     private UserAddressMapper userAddressMapper;
 
     @Override
-    @Transactional(propagation = Propagation.MANDATORY, rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, rollbackFor = Exception.class)
     public void trans(Integer type) {
         userAddressMapper.insert(new UserAddress(1L, "山东"));
         throw new RuntimeException();
@@ -23,6 +23,6 @@ public class TransactionMandatoryServiceImpl implements TransactionCommonService
 
     @Override
     public Propagation getType() {
-        return Propagation.MANDATORY;
+        return Propagation.NOT_SUPPORTED;
     }
 }

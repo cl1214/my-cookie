@@ -1,43 +1,24 @@
 package com.cl.service.impl.transaction;
 
 import com.cl.mapper.transaction.UserAddressMapper;
-import com.cl.mapper.transaction.UserMapper;
-import com.cl.pojo.transaction.User;
 import com.cl.pojo.transaction.UserAddress;
-import com.cl.service.transaction.TransactionService;
+import com.cl.service.transaction.TransactionCommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TransactionSupportsServiceImpl implements TransactionService {
-
-    @Autowired
-    private UserMapper userMapper;
+public class TransactionSupportsServiceImpl implements TransactionCommonService {
 
     @Autowired
     private UserAddressMapper userAddressMapper;
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
-    public Boolean trans(Integer type) {
-        insertUserAddress();
-        insertUser();
-        return true;
-    }
-
-    @Override
-    public void insertUser() {
-        userMapper.insert(new User(1L, "张三"));
-        throw new RuntimeException();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
-    public void insertUserAddress() {
+    public void trans(Integer type) {
         userAddressMapper.insert(new UserAddress(1L, "山东"));
-        //throw new RuntimeException();
+        throw new RuntimeException();
     }
 
     @Override
